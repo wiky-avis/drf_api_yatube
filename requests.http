@@ -60,7 +60,7 @@ Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
 
 {
-    "text": "Отличный пост 234!"
+    "text": "Отличный пост 5555!"
 }
 
 ###
@@ -79,4 +79,13 @@ GET http://localhost:8000/api/v1/posts/2/comments/3/
 
 ###
 
-GET http://localhost:8000/api/v1/follow/2/
+GET http://localhost:8000/api/v1/follow/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
+
+###
+
+GET http://localhost:8000/api/v1/follow/?user=3
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
+

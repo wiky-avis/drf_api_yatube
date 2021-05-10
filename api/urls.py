@@ -6,11 +6,11 @@ from rest_framework.routers import DefaultRouter
 from .views import CommentViewSet, PostViewSet, GroupViewSet, FollowViewSet
 
 router = DefaultRouter()
-router.register(r'posts', PostViewSet)
+router.register(r'^posts', PostViewSet)
 router.register(
-    r'posts/(?P<id>[0-9]+)/comments', CommentViewSet, basename='comments')
-router.register(r'follow', FollowViewSet)
-router.register(r'group', GroupViewSet)
+    r'^posts/(?P<id>[0-9]+)/comments', CommentViewSet, basename='comments')
+router.register(r'^follow', FollowViewSet)
+router.register(r'^group', GroupViewSet)
 
 urlpatterns = router.urls
 
