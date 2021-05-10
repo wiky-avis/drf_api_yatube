@@ -12,9 +12,14 @@ GET http://localhost:8000/api/v1/posts/
 
 ###
 
+GET http://localhost:8000/api/v1/posts/?group=1
+Content-Type: application/json
+
+###
+
 POST http://localhost:8000/api/v1/posts/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
 
 {
     "text": "Тескт поста 11"
@@ -27,21 +32,51 @@ GET http://localhost:8000/api/v1/group/
 ###
 POST http://localhost:8000/api/v1/group/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
 
 {
-    "title": "Путешествия",
-    "slug": "journeys",
-    "description": "группа про путешествия"
+    "title": "Жиза"
 }
 
 ###
 
-PUT http://localhost:8000/api/v1/posts/1/
+PUT http://localhost:8000/api/v1/posts/8/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
 
 {
-    "text": "Тескт поста 0111",
+    "text": "Тескт поста 08",
     "group": 3
 }
+
+###
+
+GET http://localhost:8000/api/v1/posts/1/comments/
+
+###
+
+POST http://localhost:8000/api/v1/posts/1/comments/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
+
+{
+    "text": "Отличный пост 234!"
+}
+
+###
+
+PUT http://localhost:8000/api/v1/posts/2/comments/3/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTg0MjI5LCJqdGkiOiIzYTI4OGRhOTAyNzE0NWI5YWNkYzJkZjQ1MWIxYWZkNCIsInVzZXJfaWQiOjF9.u3SFi-tXawDFko5lHbOAeBP10IY6Q2KxIgbo7EBp8XI
+
+{
+    "text": "Читаю вас с удовольствием 222!"
+}
+
+###
+
+GET http://localhost:8000/api/v1/posts/2/comments/3/
+
+###
+
+GET http://localhost:8000/api/v1/follow/2/
