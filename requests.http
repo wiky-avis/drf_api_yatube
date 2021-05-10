@@ -1,0 +1,47 @@
+POST http://localhost:8000/api/v1/token/
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+
+GET http://localhost:8000/api/v1/posts/
+
+###
+
+POST http://localhost:8000/api/v1/posts/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+
+{
+    "text": "Тескт поста 11"
+}
+
+###
+
+GET http://localhost:8000/api/v1/group/
+
+###
+POST http://localhost:8000/api/v1/group/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+
+{
+    "title": "Путешествия",
+    "slug": "journeys",
+    "description": "группа про путешествия"
+}
+
+###
+
+PUT http://localhost:8000/api/v1/posts/1/
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTgwMDQyLCJqdGkiOiJkZWVjMDNiYjkyNzI0Yjc3YWU3NDUxNjAzNDA3OTkxOCIsInVzZXJfaWQiOjF9.HmoPxLdjWBssmv-W3ujkzsJnZbHNmyB-Ie8HykUZN2Q
+
+{
+    "text": "Тескт поста 0111",
+    "group": 3
+}
