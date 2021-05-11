@@ -24,7 +24,7 @@
 ```$ python manage.py makemigrations``` и ```$ python manage.py migrate```
 
 Создаем суперпользователя:
-```$ python manage.py createsuperuser --email admin@example.com --username admin```
+```$ python manage.py createsuperuser --email admin@test.com --username admin```
 
 Запускаем django сервер:
 ```$ python manage.py runserver```
