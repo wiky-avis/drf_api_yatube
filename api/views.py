@@ -1,13 +1,12 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .models import Post, Group, Follow, User
+from .models import Follow, Group, Post, User
 from .permissions import IsOwnerOrReadOnly
-from .serializers import CommentSerializer, PostSerializer, GroupSerializer, FollowSerializer
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
-
+from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
+                          PostSerializer)
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -47,12 +46,10 @@ class GroupViewSet(viewsets.ModelViewSet):
 class FollowViewSet(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     queryset = Follow.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['user', 'following']
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['user__username']
 
-    def perform_create(self, serializer):
-        following = get_object_or_404(User, username=self.request.data.get('following'))
-        follow = following.following.filter(following=following.id, user=self.request.user.id).exists()
-        if not follow and self.request.user != following:
-            serializer.save(user=self.request.user, following=following)
+    def get_queryset(self):
+        return Follow.objects.filter(following=self.request.user)
+
 
