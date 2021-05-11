@@ -65,5 +65,5 @@ API вернет JWT-токен:
 ![GitHub Logo](/images/новый_пост.jpg)
 
 ## Фильтруем посты по номеру группы
-Передаем GET-запрос `http://127.0.0.1:8000/api/v1/posts/`.
+Передаем GET-запрос `http://localhost:8000/api/v1/posts/?group=1`.
 ![GitHub Logo](/images/фильтр_по_группе.jpg)
