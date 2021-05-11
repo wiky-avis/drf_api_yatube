@@ -30,8 +30,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         post = get_object_or_404(Post, id=self.kwargs.get('id'))
-        comments = post.comments.all()
-        return comments
+        return post.comments.all()
 
 
 class GroupViewSet(viewsets.ModelViewSet):
@@ -50,6 +49,5 @@ class FollowViewSet(viewsets.ModelViewSet):
     search_fields = ['user__username']
 
     def get_queryset(self):
-        return Follow.objects.filter(following=self.request.user)
-
-
+        user = get_object_or_404(User, id=self.request.user.pk)
+        return user.following.all()

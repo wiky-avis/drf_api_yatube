@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueTogetherValidator
 
 from .models import Comment, Follow, Group, Post, User
@@ -44,18 +43,14 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('user', 'following')
         model = Follow
-        validators = [
-            UniqueTogetherValidator(
-                queryset=Follow.objects.all(),
-                fields=['user', 'following'],
-            )
-        ]
+        validators = [UniqueTogetherValidator(
+            queryset=Follow.objects.all(), fields=['user', 'following'])]
 
-    def validate(self, attrs):
-        user = attrs.get('user')
-        following_username = attrs.get('following')
-        following = get_object_or_404(User, username=following_username)
+    def validate(self, data):
+        user = data.get('user')
+        following = get_object_or_404(User, username=data.get('following'))
         if following == user:
-            raise ValidationError('Нельзя подписаться на себя')
+            raise serializers.ValidationError(
+                'Вы не можете подписаться на самого себя')
 
-        return super(FollowSerializer, self).validate(attrs)
+        return data
