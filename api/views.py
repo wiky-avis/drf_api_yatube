@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, mixins, viewsets
+from rest_framework.viewsets import GenericViewSet, ModelViewSet
+from rest_framework.filters import SearchFilter
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Follow, Group, Post, User
@@ -9,7 +11,7 @@ from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer)
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     permission_classes = [IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly]
@@ -20,7 +22,7 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = [IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly]
 
@@ -33,24 +35,18 @@ class CommentViewSet(viewsets.ModelViewSet):
         return post.comments.all()
 
 
-class GroupViewSet(
-                    viewsets.GenericViewSet,
-                    mixins.CreateModelMixin,
-                    mixins.ListModelMixin):
+class GroupViewSet(GenericViewSet, CreateModelMixin, ListModelMixin):
 
     serializer_class = GroupSerializer
     queryset = Group.objects.all()
     permission_classes = [IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly]
 
 
-class FollowViewSet(
-                    viewsets.GenericViewSet,
-                    mixins.CreateModelMixin,
-                    mixins.ListModelMixin):
+class FollowViewSet(GenericViewSet, CreateModelMixin, ListModelMixin):
 
     serializer_class = FollowSerializer
     queryset = Follow.objects.all()
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [SearchFilter]
     search_fields = ['user__username']
 
     def get_queryset(self):
