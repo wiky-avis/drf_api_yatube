@@ -5,23 +5,23 @@ from rest_framework_simplejwt.views import (TokenObtainPairView,
 
 from .views import CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet
 
-router = DefaultRouter()
-router.register(r'^posts', PostViewSet)
-router.register(
-    r'^posts/(?P<id>[0-9]+)/comments', CommentViewSet, basename='comments')
-router.register(r'^follow', FollowViewSet)
-router.register(r'^group', GroupViewSet)
+v1_router = DefaultRouter()
+v1_router.register('posts', PostViewSet)
+v1_router.register(
+    r'^posts/(?P<id>\d+)/comments', CommentViewSet, basename='comments')
+v1_router.register('follow', FollowViewSet)
+v1_router.register('group', GroupViewSet)
 
-urlpatterns = router.urls
+urlpatterns = v1_router.urls
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('v1/', include(v1_router.urls)),
     path(
-        'token/',
+        'v1/token/',
         TokenObtainPairView.as_view(),
         name='token_obtain_pair'),
     path(
-        'token/refresh/',
+        'v1/token/refresh/',
         TokenRefreshView.as_view(),
         name='token_refresh'),
 ]
