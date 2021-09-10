@@ -20,6 +20,6 @@ pytest==6.2.4
 pytest-django==4.2.0
 pytz==2021.1
 requests==2.25.1
-sqlparse==0.4.1
+sqlparse==0.4.2
 toml==0.10.2
 urllib3==1.26.4
